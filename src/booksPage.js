@@ -1,11 +1,11 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import BooksList from './bookList'
-import './App.css'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import BooksList from './bookList';
+import './App.css';
 
 class BooksPage extends React.Component {
   render() {
-    const {reading, read, wantToRead} = this.props
+    const {reading, read, wantToRead, onChangeSelect} = this.props;
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -16,19 +16,19 @@ class BooksPage extends React.Component {
             <div className="bookshelf">
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
-                <BooksList books={reading} />
+                <BooksList books={reading} onChangeSelect={onChangeSelect}/>
               </div>
             </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
-                <BooksList books={wantToRead} />
+                <BooksList books={wantToRead} onChangeSelect={onChangeSelect}/>
               </div>
             </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
-                <BooksList books={read} />
+                <BooksList books={read} onChangeSelect={onChangeSelect}/>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@ class BooksPage extends React.Component {
           <Link to='/search'>Add a book</Link>
         </div>
       </div>
-    )
+    );
   }
 }
-export default BooksPage
+export default BooksPage;
