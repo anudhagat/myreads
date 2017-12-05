@@ -5,7 +5,7 @@ import './App.css'
 const BooksList = ({books, onChangeSelect}) => {
   return (
     <ol className="books-grid">
-      {books.map(book => {
+      { books && books.map(book => {
         let bookUrl = '';
         if (book.imageLinks && book.imageLinks.thumbnail) {
           bookUrl = 'url("'+ book.imageLinks.thumbnail + '")';
@@ -17,7 +17,7 @@ const BooksList = ({books, onChangeSelect}) => {
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: bookUrl }}></div>
                 <div className="book-shelf-changer">
                   <select onChange={onChangeSelect} data-book={book.id} value={book.shelf}>
-                    <option value="none" disabled>Move to...</option>
+                    <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>
